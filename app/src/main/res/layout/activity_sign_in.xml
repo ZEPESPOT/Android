@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@id/signinSubtitle" />
 
     <EditText
-        android:id="@+id/singinPwInput"
+        android:id="@+id/signinPwInput"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="16dp"
