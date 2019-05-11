@@ -18,6 +18,9 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.dialog_signup_check.view.*
 import kotlinx.android.synthetic.main.fragment_signup_1.view.*
 import kotlinx.android.synthetic.main.fragment_signup_2.view.*
+import org.jetbrains.anko.clearTask
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.newTask
 import org.jetbrains.anko.toast
 
 
@@ -157,6 +160,8 @@ class SignUpActivity : BaseActivity() {
             var password = userInfos.getString("password")
             var nickname = userInfos.getString("nickname")
             var zepetoId = userInfos.getString("zepetoId")
+
+            startActivity(context!!.intentFor<MainActivity>().newTask().clearTask())
         }
     }
 }
