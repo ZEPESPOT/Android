@@ -1,5 +1,6 @@
 package com.buddman.zepespot
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -9,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import com.tsengvn.typekit.TypekitContextWrapper
 
 abstract class BaseActivity : AppCompatActivity(){
 
@@ -31,6 +33,10 @@ abstract class BaseActivity : AppCompatActivity(){
 //            window.navigationBarColor = Color.BLACK
         }
         setDefault()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase))
     }
 
     protected abstract fun setDefault()

@@ -2,9 +2,7 @@ package com.buddman.zepespot
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.os.Looper
-import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -12,7 +10,13 @@ import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
+    override fun setDefault() {
+        checkPermission()
+    }
+
+    override val viewId: Int = R.layout.activity_splash
+    override val toolbarId: Int = 0
 
     private val fusedLocationClient: FusedLocationProviderClient by lazy {
         LocationServices.getFusedLocationProviderClient(this)
@@ -21,12 +25,6 @@ class SplashActivity : AppCompatActivity() {
 
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  /* 10 secs */
     private val FASTEST_INTERVAL: Long = 2000 /* 2 sec */
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-        checkPermission()
-    }
 
     fun checkPermission() {
         TedPermission.with(this@SplashActivity)
