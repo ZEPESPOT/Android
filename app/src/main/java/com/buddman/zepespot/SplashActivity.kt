@@ -67,7 +67,7 @@ class SplashActivity : BaseActivity() {
 
     private fun initView(){
         splashRegister.setOnClickListener {
-            startActivity<MainMapsActivity>()
+            startActivity<SignUpActivity>()
             finish()
         }
 
