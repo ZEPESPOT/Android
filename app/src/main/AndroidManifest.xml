@@ -47,6 +47,7 @@
             android:label="@string/title_activity_main_maps"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".FindPasswordActivity" />
     </application>
 
 </manifest>
