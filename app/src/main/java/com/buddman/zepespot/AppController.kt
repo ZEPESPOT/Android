@@ -6,6 +6,7 @@ import android.app.NotificationChannel
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.tsengvn.typekit.Typekit
 
 class AppController : Application() {
@@ -16,6 +17,8 @@ class AppController : Application() {
 //        Glide.with(this)
         initNotification()
         initFont()
+        Fresco.initialize(context);
+
     }
 
     fun initNotification() {

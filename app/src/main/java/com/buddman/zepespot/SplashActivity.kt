@@ -68,12 +68,10 @@ class SplashActivity : BaseActivity() {
     private fun initView(){
         splashRegister.setOnClickListener {
             startActivity<SignUpActivity>()
-            finish()
         }
 
         splashLogin.setOnClickListener {
             startActivity<SignInActivity>()
-            finish()
         }
     }
 

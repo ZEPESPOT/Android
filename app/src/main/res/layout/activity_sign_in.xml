@@ -70,6 +70,7 @@
         android:background="@drawable/bg_gray_et"
         android:gravity="center_vertical"
         android:hint="Email"
+        android:text="buddman1208@mathflat.com"
         android:paddingLeft="20dp"
         android:singleLine="true"
         android:textStyle="bold"
