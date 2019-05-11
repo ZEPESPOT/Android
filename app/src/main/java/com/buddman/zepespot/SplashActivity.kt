@@ -70,6 +70,11 @@ class SplashActivity : BaseActivity() {
             startActivity<MainMapsActivity>()
             finish()
         }
+
+        splashLogin.setOnClickListener {
+            startActivity<SignInActivity>()
+            finish()
+        }
     }
 
 }

@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".SignInActivity"></activity>
         <activity
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash"
@@ -43,10 +44,8 @@
 
         <activity
             android:name=".MainMapsActivity"
-            android:label="@string/title_activity_main_maps">
-
-        </activity>
-        <activity android:name=".MainActivity"></activity>
+            android:label="@string/title_activity_main_maps"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
