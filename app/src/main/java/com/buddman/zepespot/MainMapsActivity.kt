@@ -1,7 +1,8 @@
 package com.buddman.zepespot
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.annotation.SuppressLint
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -9,34 +10,38 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class MainMapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
+class MainMapsActivity : BaseActivity(), OnMapReadyCallback {
+    override val viewId: Int = R.layout.activity_main_maps
+    override val toolbarId: Int = 0
     private lateinit var mMap: GoogleMap
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_maps)
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    override fun setDefault() {
+        initLocation()
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    @SuppressLint("MissingPermission")
+    private fun initLocation() {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+        fusedLocationClient.run {
+            lastLocation.addOnSuccessListener {
+                LatLng(it.latitude, it.longitude).apply {
+                    mMap.addMarker(MarkerOptions().position(this).title("나는 여기!"))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(this, 17.0f))
+                }
+            }
+        }
+
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        val sydney = LatLng(37.5337709, 126.9635608)
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 }
