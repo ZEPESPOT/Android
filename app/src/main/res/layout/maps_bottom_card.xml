@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="content"
+            type="com.buddman.zepespot.models.Course" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="180dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="2dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="false"
+        android:layout_height="200dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bts" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="16dp"
+            android:layout_height="match_parent"
+            android:background="@{content.bgColor}">
+
+            <TextView
+                android:id="@+id/mapsCardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3sp"
+                android:textStyle="bold"
+                android:text="@{content.sequence_name}"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@id/mapsCardSubtitle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mapsCardSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="2sp"
+                android:text="@{`No - ` + content.sequence_number}"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mapsCardTitle" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

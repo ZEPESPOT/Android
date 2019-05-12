@@ -51,6 +51,9 @@ class MainActivity : BaseActivity() {
                             mainCardReview.setOnClickListener {
                                 startActivity(intentFor<ReviewActivity>())
                             }
+                            mainCardStart.setOnClickListener {
+                                startActivity(intentFor<MainMapsActivity>())
+                            }
                         }
                     }
                 }

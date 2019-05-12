@@ -25,7 +25,7 @@ public class NetworkServiceGenerator {
             .create();
 
     private Retrofit.Builder serverBuilder = new Retrofit.Builder()
-            .baseUrl("")    // 테스트
+            .baseUrl("http://soylatte.kr:5000/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson));
 

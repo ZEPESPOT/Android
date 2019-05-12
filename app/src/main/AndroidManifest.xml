@@ -51,6 +51,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".FindPasswordActivity" />
         <activity android:name=".ReviewActivity" />
+        <activity android:name=".PhotoEditActivity" />
     </application>
 
 </manifest>

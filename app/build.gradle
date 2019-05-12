@@ -76,6 +76,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.github.Cutta:TagView:1.3'
     implementation 'com.github.katoro:typekit:1.0.1'
+    implementation 'com.flying.xiaopo:sticker:1.6.0'
+
 }
 
 kapt {
