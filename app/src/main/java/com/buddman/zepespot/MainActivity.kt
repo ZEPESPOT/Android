@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SimpleItemAnimator
 import com.buddman.zepespot.databinding.MainCourseCardBinding
+import com.buddman.zepespot.utils.CredentialManager
 import com.github.nitrico.lastadapter.LastAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.intentFor
@@ -31,7 +32,7 @@ class MainActivity : BaseActivity() {
 
 
     private fun initProfile() {
-        mainProfile.setImageURI("http://47.74.149.35/api/photo/20H0qfm5DHKnIO96C8UEMp?hashCodes=7V17S2&width=300")
+        mainProfile.setImageURI("http://47.74.149.35/api/photo/20H0qfm5DHKnIO96C8UEMp?hashCodes=${CredentialManager.instance.zepetoId}&width=300")
     }
 
     private fun initView() {

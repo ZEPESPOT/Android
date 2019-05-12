@@ -5,13 +5,17 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.provider.MediaStore
+import com.buddman.zepespot.utils.CredentialManager
 import com.buddman.zepespot.utils.NetworkDrawable
 import com.xiaopo.flying.sticker.DrawableSticker
 import kotlinx.android.synthetic.main.activity_photo_edit.*
+import org.jetbrains.anko.toast
 
 class PhotoEditActivity: BaseActivity() {
     override fun setDefault() {
         save.setOnClickListener {
+            toast("Photo saved!")
+            finish()
         }
         sendTakePhotoIntent()
     }
@@ -36,7 +40,7 @@ class PhotoEditActivity: BaseActivity() {
     private fun addMe(){
         editView.apply {
             addSticker(DrawableSticker(NetworkDrawable.drawableFromUrl(
-                    "http://47.74.149.35/api/photo/1zUcXMFLQ5FIGkaMBtc28K/?hashCodes=1XBRWB,7V17S2&width=512"
+                    "http://47.74.149.35/api/photo/1zUcXMFLQ5FIGkaMBtc28K/?hashCodes=1XBRWB,${CredentialManager.instance.zepetoId}&width=512"
             )))
         }
     }

@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import com.buddman.zepespot.utils.CredentialManager
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.controller.BaseControllerListener
 import com.facebook.imagepipeline.image.ImageInfo
@@ -159,8 +160,10 @@ class SignUpActivity : BaseActivity() {
             var email = userInfos.getString("email")
             var password = userInfos.getString("password")
             var nickname = userInfos.getString("nickname")
-            var zepetoId = userInfos.getString("zepetoId")
+            val zepetoId = userInfos.getString("zepetoId")
 
+            CredentialManager.instance.zepetoId = zepetoId
+            context!!.toast("Howdy, $nickname!")
             startActivity(context!!.intentFor<MainActivity>().newTask().clearTask())
         }
     }
