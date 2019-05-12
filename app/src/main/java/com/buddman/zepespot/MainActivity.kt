@@ -8,12 +8,13 @@ import android.support.v7.widget.SimpleItemAnimator
 import com.buddman.zepespot.databinding.MainCourseCardBinding
 import com.github.nitrico.lastadapter.LastAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.intentFor
 
 
 class MainActivity : BaseActivity() {
 
 
-    val trackList : ArrayList<DummyCourse> by lazy {
+    val trackList: ArrayList<DummyCourse> by lazy {
         arrayListOf(
                 DummyCourse("BTS History", "Walk along the\nfootsteps of BTS!", 35724, ContextCompat.getDrawable(this, R.drawable.bts_history)!!, Color.parseColor("#5773ff")),
                 DummyCourse("BTS Mukbang", "BTS’s Taste\nHouse Tour!", 12355, ContextCompat.getDrawable(this, R.drawable.bts)!!, Color.parseColor("#ffb900")),
@@ -21,7 +22,7 @@ class MainActivity : BaseActivity() {
                 DummyCourse("Twice History", "Walk along the\nfootsteps of BTS!", 35724, ContextCompat.getDrawable(this, R.drawable.twice)!!, Color.parseColor("#F09563"))
         )
     }
-    val trackAdatper : LastAdapter by lazy { LastAdapter(trackList, BR.content)}
+    val trackAdatper: LastAdapter by lazy { LastAdapter(trackList, BR.content) }
 
     override fun setDefault() {
         initProfile()
@@ -29,7 +30,7 @@ class MainActivity : BaseActivity() {
     }
 
 
-    private fun initProfile(){
+    private fun initProfile() {
         mainProfile.setImageURI("http://47.74.149.35/api/photo/20H0qfm5DHKnIO96C8UEMp?hashCodes=7V17S2&width=300")
     }
 
@@ -40,10 +41,17 @@ class MainActivity : BaseActivity() {
         }
         trackAdatper
                 .map<DummyCourse, MainCourseCardBinding>(R.layout.main_course_card) {
-                    onClick {
+                    onBind {
                         val position = it.adapterPosition
-                        trackList.forEachIndexed { index, item -> item.isSelected = (index == position) }
-                        trackAdatper.notifyItemRangeChanged(0, trackList.size)
+                        it.binding.apply {
+                            mainCardContainer.setOnClickListener {
+                                trackList.forEachIndexed { index, item -> item.isSelected = (index == position) }
+                                trackAdatper.notifyItemRangeChanged(0, trackList.size)
+                            }
+                            mainCardReview.setOnClickListener {
+                                startActivity(intentFor<ReviewActivity>())
+                            }
+                        }
                     }
                 }
                 .into(mainRv)
@@ -53,11 +61,11 @@ class MainActivity : BaseActivity() {
     override val toolbarId: Int = 0
 }
 
-data class DummyCourse (
-        var title : String,
-        var subtitle : String,
-        var attendCount : Int,
-        var resources : Drawable,
-        var bgcolor : Int,
-        var isSelected : Boolean = false
+data class DummyCourse(
+        var title: String,
+        var subtitle: String,
+        var attendCount: Int,
+        var resources: Drawable,
+        var bgcolor: Int,
+        var isSelected: Boolean = false
 )

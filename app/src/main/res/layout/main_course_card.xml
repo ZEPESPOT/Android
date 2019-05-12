@@ -17,6 +17,7 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/mainCardContainer"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:layout_marginLeft="16dp"
@@ -97,6 +98,7 @@
             android:visibility="@{content.isSelected ? View.VISIBLE : View.GONE }">
 
             <TextView
+                android:id="@+id/mainCardReview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -110,6 +112,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/mainCardStart"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
