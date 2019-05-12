@@ -13,6 +13,9 @@ class PhotoEditActivity: BaseActivity() {
                     "http://47.74.149.35/api/photo/1zUcXMFLQ5FIGkaMBtc28K/?hashCodes=1XBRWB,7V17S2&width=512"
             )))
         }
+
+        save.setOnClickListener {
+        }
     }
 
 
